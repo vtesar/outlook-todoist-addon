@@ -29,14 +29,12 @@
       <ov:Host xsi:type="ov:Mailbox">
         <ov:DesktopFormFactor>
 
-          <!-- This is REQUIRED for ExecuteFunction -->
-          <ov:FunctionFile resid="functionFile"/>
+          <ov:FunctionFile resid="functionFileUrl"/>
 
           <ov:ExtensionPoint xsi:type="ov:MessageReadCommandSurface">
             <ov:OfficeTab id="TabDefault">
               <ov:Group id="TodoistGroup" label="Todoist">
-                <ov:Control xsi:type="ov:Button"
-                            id="SendToTodoistButton"
+                <ov:Control xsi:type="ov:Button" id="SendToTodoistButton"
                             label="Send to Todoist"
                             action="executeSendToTodoist"/>
               </ov:Group>
@@ -55,8 +53,8 @@
 
     <ov:Resources>
       <ov:Urls>
-        <ov:Url id="functionFile"
-                DefaultValue="https://vtesar.github.io/outlook-todoist-addon/commands.js"/>
+        <ov:Url id="functionFileUrl"
+                DefaultValue="https://gist.githubusercontent.com/vtesar/f3ada0d7527add70af6b0d5aa23a6a45/raw/550424acba2e01fc7e0bba529b6b1b2e6a0364c6/command.js"/>
       </ov:Urls>
     </ov:Resources>
 
