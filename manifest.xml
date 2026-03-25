@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="MailApp"
+           Version="1.0.0.0"
+           ProviderName="Vlasta"
+           DefaultLocale="en-US"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides">
+
+  <Id>send-email-to-todoist-addon</Id>
+  <DisplayName DefaultValue="Send to Todoist"/>
+  <Description DefaultValue="Send link to current email directly to Todoist"/>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.12">
+      <Set Name="Mailbox"/>
+    </Sets>
+  </Requirements>
+
+  <Permissions>ReadWriteMailbox</Permissions>
+
+  <VersionOverrides xsi:type="ov:VersionOverrides" Version="1.0">
+    <ov:Hosts>
+      <ov:Host xsi:type="ov:Mailbox">
+        <ov:DesktopFormFactor>
+
+          <!-- This is REQUIRED for ExecuteFunction -->
+          <ov:FunctionFile resid="functionFile"/>
+
+          <ov:ExtensionPoint xsi:type="ov:MessageReadCommandSurface">
+            <ov:OfficeTab id="TabDefault">
+              <ov:Group id="TodoistGroup" label="Todoist">
+                <ov:Control xsi:type="ov:Button"
+                            id="SendToTodoistButton"
+                            label="Send to Todoist"
+                            action="executeSendToTodoist"/>
+              </ov:Group>
+            </ov:OfficeTab>
+          </ov:ExtensionPoint>
+
+        </ov:DesktopFormFactor>
+      </ov:Host>
+    </ov:Hosts>
+
+    <ov:Actions>
+      <ov:Action xsi:type="ov:ExecuteFunction"
+                 id="executeSendToTodoist"
+                 functionName="sendToTodoist"/>
+    </ov:Actions>
+
+    <ov:Resources>
+      <ov:Urls>
+        <ov:Url id="functionFile"
+                DefaultValue="https://vtesar.github.io/outlook-todoist-addon/commands.js"/>
+      </ov:Urls>
+    </ov:Resources>
+
+  </VersionOverrides>
+</OfficeApp>
